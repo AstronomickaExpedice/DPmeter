@@ -16,9 +16,15 @@ void setup() {
   pinMode(8, OUTPUT); 
   pinMode(9, OUTPUT);
   //nastavení pinů pro H-bridge
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+  //nastavení pinů pro H-bridge větráku
 }
 
 void loop() {
+  //ventilátor
+  digitalWrite(11, LOW);
+  digitalWrite(10, HIGH);
   kapacita = Mereni();
   teplota = MereniTeploty();
   Serial.print("Kapacita: ");
@@ -26,7 +32,7 @@ void loop() {
   Serial.print("Teplota: ");
   Serial.print(teplota);
   Serial.print("°C\n");
-    if (kapacita >= 45) {
+    if (kapacita >= 100) {
       Serial.println("MAM ROSU");
       n++;
       if (n >= 3){
